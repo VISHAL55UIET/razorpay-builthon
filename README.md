@@ -2085,6 +2085,208 @@ High-level architecture:
           └────────┘       └──────────┘    └──────────┘
 
 
+
+---
+
+# 🚀 Technology Stack
+
+The platform uses a full-stack architecture combining a React frontend with a Java/Spring Boot backend and MySQL persistence.
+
+### Backend
+
+- Java
+- Spring Boot
+- Spring Data JPA
+- Hibernate
+- REST APIs
+- Spring AI
+- Groq API through an OpenAI-compatible interface
+- Saga Pattern / Saga Orchestration
+- Resilience4j
+- Kafka
+- Redis
+- Razorpay Payment Gateway
+- JavaMail / SMTP
+- JWT Authentication
+- Google OAuth 2.0
+
+### Frontend
+
+- React
+- Vite
+- REST API integration
+- Protected routes
+- Dashboard and analytics UI
+- Payment and recovery operations UI
+- AI recovery insights
+
+### Data & Infrastructure
+
+- MySQL — persistent application and workflow state
+- Redis — fast-access state/caching and distributed-support capabilities
+- Kafka — asynchronous event-driven communication
+- Transactional Outbox — durable event publication
+- Resilience4j — fault tolerance, retry, circuit breaking and rate limiting
+
+---
+
+# 🧩 Core Reliability Components
+
+The project combines four important distributed-system patterns and infrastructure components:
+
+### 1. Saga Pattern
+
+The recovery workflow is orchestrated as a sequence of persisted steps. Each step updates workflow state, allowing failed workflows to be inspected and resumed instead of losing progress.
+
+```text
+Payment Failure
+      ↓
+AI Decision
+      ↓
+Recovery Plan
+      ↓
+Saga Step Execution
+      ↓
+Persist State
+      ↓
+Next Step
+      ↓
+COMPLETED / FAILED
+      ↓
+Resume if required
+```
+
+### 2. Kafka
+
+Kafka provides asynchronous event-driven communication between recovery components. Recovery events can be published to Kafka and processed by consumers without tightly coupling the producer and consumer operations.
+
+```text
+Recovery Event
+      ↓
+Transactional Outbox
+      ↓
+Kafka
+      ↓
+Consumer
+      ↓
+Recovery Processing
+```
+
+### 3. Redis
+
+Redis is included as a high-speed data layer for operations that benefit from low-latency access and distributed application support, such as temporary state, caching, and coordination-related use cases.
+
+```text
+Application
+     ↓
+   Redis
+     ↓
+Fast-access / Temporary State
+```
+
+### 4. Resilience4j
+
+Resilience4j protects the application when external services become slow, unavailable, or unreliable.
+
+```text
+Application
+     ↓
+Resilience4j
+     ↓
+Circuit Breaker / Retry / Rate Limiter
+     ↓
+External Service
+```
+
+This is especially relevant for AI providers, payment gateways, email providers, and other external dependencies.
+
+---
+
+# 🖥️ Frontend Project Structure
+
+The React/Vite frontend is organized into separate areas for reusable UI, pages, API communication, authentication, recovery operations, and analytics.
+
+```text
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   ├── dashboard/
+│   │   ├── payments/
+│   │   ├── recovery/
+│   │   └── analytics/
+│   │
+│   ├── pages/
+│   │   ├── Login/
+│   │   ├── Signup/
+│   │   ├── Dashboard/
+│   │   ├── Customers/
+│   │   ├── Payments/
+│   │   ├── Recovery/
+│   │   ├── AIRecovery/
+│   │   └── Analytics/
+│   │
+│   ├── services/
+│   │   └── api/
+│   │
+│   ├── hooks/
+│   ├── context/
+│   ├── routes/
+│   ├── utils/
+│   ├── assets/
+│   └── App.jsx
+│
+├── public/
+├── package.json
+├── vite.config.js
+└── .env
+```
+
+The frontend follows a modular structure so authentication, payments, recovery, AI insights, and analytics can evolve independently.
+
+---
+
+# 🔄 End-to-End Business Flow
+
+The complete user and recovery journey can be represented as:
+
+```text
+Signup
+  ↓
+Login
+  ↓
+Customer
+  ↓
+Payment
+  ↓
+Failed Payment
+  ↓
+AI Decision
+  ↓
+Recovery Saga
+  ↓
+Email
+  ↓
+Recovery Attempt
+  ↓
+Audit Trail
+  ↓
+Outbox
+  ↓
+Kafka
+  ↓
+Idempotency
+  ↓
+Rate Limiter
+  ↓
+Dashboard / Analytics
+```
+
+Each stage has a specific responsibility: authentication identifies the operator, customer and payment modules manage business data, the AI decision engine determines a suitable recovery action, the Saga orchestrates execution, email communicates recovery actions, recovery attempts and audit events provide traceability, the outbox and Kafka support reliable asynchronous processing, idempotency prevents duplicate operations, rate limiting controls traffic, and the dashboard exposes operational and revenue insights.
+
+---
+
+
 #  Author
 
 ## Vishal Singh
