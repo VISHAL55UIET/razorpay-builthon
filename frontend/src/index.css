@@ -1,0 +1,559 @@
+@import "tailwindcss";
+
+/* =========================================================
+   AI PAYMENT PLATFORM
+   Global Design System
+   ========================================================= */
+
+:root {
+  /* =======================================================
+     Backgrounds
+     ======================================================= */
+
+  --bg-primary: #f1f5ff;
+  --bg-secondary: #f8faff;
+  --bg-surface: #ffffff;
+  --bg-sidebar: #0b1224;
+
+  --bg-gradient:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(99, 102, 241, 0.10),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(59, 130, 246, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #f4f7ff 0%,
+      #eef3ff 48%,
+      #f7f9ff 100%
+    );
+
+  /* =======================================================
+     Text
+     ======================================================= */
+
+  --text-primary: #0b1736;
+  --text-secondary: #52627d;
+  --text-muted: #8b9ab5;
+  --text-white: #ffffff;
+
+  /* =======================================================
+     Borders
+     ======================================================= */
+
+  --border: #dbe4f2;
+  --border-light: #e9eef7;
+  --border-focus: #818cf8;
+
+  /* =======================================================
+     Primary
+     ======================================================= */
+
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-dark: #3730a3;
+  --primary-light: #eef2ff;
+  --primary-soft: #e0e7ff;
+
+  /* =======================================================
+     Semantic Colors
+     ======================================================= */
+
+  --success: #059669;
+  --success-light: #ecfdf5;
+  --success-border: #a7f3d0;
+
+  --danger: #dc2626;
+  --danger-light: #fef2f2;
+  --danger-border: #fecaca;
+
+  --warning: #d97706;
+  --warning-light: #fffbeb;
+  --warning-border: #fde68a;
+
+  --info: #2563eb;
+  --info-light: #eff6ff;
+  --info-border: #bfdbfe;
+
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --purple-border: #ddd6fe;
+
+  /* =======================================================
+     Shadows
+     ======================================================= */
+
+  --shadow-xs:
+    0 1px 2px rgba(15, 23, 42, 0.04);
+
+  --shadow-sm:
+    0 2px 6px rgba(30, 64, 175, 0.06);
+
+  --shadow-md:
+    0 8px 24px rgba(30, 64, 175, 0.08);
+
+  --shadow-lg:
+    0 16px 40px rgba(30, 64, 175, 0.11);
+
+  --shadow-xl:
+    0 24px 60px rgba(30, 64, 175, 0.14);
+
+  /* =======================================================
+     Radius
+     ======================================================= */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  /* =======================================================
+     Typography
+     ======================================================= */
+
+  --font-sans:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-family: var(--font-sans);
+
+  color: var(--text-primary);
+  background: var(--bg-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: var(--bg-gradient);
+
+  color: var(--text-primary);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+/* =========================================================
+   MAIN APPLICATION AREA
+   ========================================================= */
+
+main {
+  min-height: calc(100vh - 64px);
+
+  background:
+    radial-gradient(
+      circle at 15% 5%,
+      rgba(99, 102, 241, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(59, 130, 246, 0.06),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #f5f7ff 0%,
+      #edf3ff 50%,
+      #f7f9ff 100%
+    );
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-weight: 600;
+  line-height: 1.25;
+
+  letter-spacing: -0.015em;
+}
+
+p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   PREMIUM SURFACE
+   ========================================================= */
+
+/*
+  Important:
+  Your existing JSX uses Tailwind `bg-white`
+  in many components.
+
+  We slightly tint those surfaces globally so the
+  application does not look like a plain white dashboard.
+*/
+
+.bg-white {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   BORDERS
+   ========================================================= */
+
+.border-slate-200 {
+  border-color: rgba(203, 213, 225, 0.75) !important;
+}
+
+.border-slate-100 {
+  border-color: rgba(226, 232, 240, 0.85) !important;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+
+  border-color: #c7d2fe;
+
+  box-shadow: var(--shadow-md);
+}
+
+
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+
+.page-container {
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+
+  padding: 28px;
+}
+
+.page-title {
+  font-size: 24px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.03em;
+}
+
+.page-subtitle {
+  margin-top: 6px;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+
+.status-success {
+  color: var(--success);
+
+  background: var(--success-light);
+
+  border: 1px solid var(--success-border);
+}
+
+.status-danger {
+  color: var(--danger);
+
+  background: var(--danger-light);
+
+  border: 1px solid var(--danger-border);
+}
+
+.status-warning {
+  color: var(--warning);
+
+  background: var(--warning-light);
+
+  border: 1px solid var(--warning-border);
+}
+
+.status-info {
+  color: var(--info);
+
+  background: var(--info-light);
+
+  border: 1px solid var(--info-border);
+}
+
+.status-ai {
+  color: var(--purple);
+
+  background: var(--purple-light);
+
+  border: 1px solid var(--purple-border);
+}
+
+
+/* =========================================================
+   BUTTON POLISH
+   ========================================================= */
+
+button {
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+
+/* =========================================================
+   INPUTS / SELECTS
+   ========================================================= */
+
+input,
+select,
+textarea {
+  border-color: var(--border);
+
+  background: rgba(255, 255, 255, 0.75);
+
+  color: var(--text-primary);
+
+  outline: none;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--border-focus);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  transition:
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+table {
+  width: 100%;
+}
+
+thead {
+  background: rgba(238, 242, 255, 0.55);
+}
+
+tbody tr {
+  transition:
+    background-color 150ms ease;
+}
+
+tbody tr:hover {
+  background: rgba(238, 242, 255, 0.45);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(226, 232, 240, 0.35);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #a5b4fc,
+    #818cf8
+  );
+
+  border-radius: 999px;
+
+  border: 2px solid transparent;
+
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #818cf8,
+    #6366f1
+  );
+
+  background-clip: padding-box;
+}
+
+
+::selection {
+  background: rgba(99, 102, 241, 0.20);
+
+  color: var(--primary-dark);
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid #818cf8;
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .page-container {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-container {
+    padding: 16px;
+  }
+
+  main {
+    min-height: calc(100vh - 56px);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+  }
+}
