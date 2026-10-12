@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 
 import DashboardLayout from "./components/layout/DashboardLayout";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-
 import Dashboard from "./components/dashboard/Dashboard";
 import Payments from "./components/payments/Payments";
 import RecentPayments from "./components/dashboard/RecentPayments";
