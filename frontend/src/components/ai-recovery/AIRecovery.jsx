@@ -13,46 +13,25 @@ import {
 } from 'lucide-react'
 
 import api from '../../api/axios'
-
-
 function AIRecovery() {
 
   const [payments, setPayments] = useState([])
 
   const [insights, setInsights] = useState([])
-
-  // Saga state per payment
   const [sagas, setSagas] = useState({})
-
   const [loading, setLoading] = useState(true)
-
   const [generating, setGenerating] =
     useState(false)
-
   const [sagaLoading, setSagaLoading] =
     useState({})
-
   const [resumeLoading, setResumeLoading] =
     useState({})
-
   const [error, setError] =
     useState('')
-
-
-  // =========================================================
-  // INITIAL DATA
-  // =========================================================
-
   useEffect(() => {
-
     fetchInitialData()
 
   }, [])
-
-
-  // =========================================================
-  // FETCH INITIAL DATA
-  // =========================================================
 
   const fetchInitialData = async () => {
 
@@ -73,11 +52,6 @@ function AIRecovery() {
         api.get('/analytics/ai'),
 
       ])
-
-
-      // =====================================================
-      // PAYMENTS
-      // =====================================================
 
       const paymentData =
         paymentsResponse.data
@@ -118,21 +92,9 @@ function AIRecovery() {
 
 
       setPayments(paymentList)
-
-
-      // =====================================================
-      // LOAD EXISTING SAGAS
-      // =====================================================
-
       await loadExistingSagas(
         paymentList
       )
-
-
-      // =====================================================
-      // SAVED AI INSIGHTS
-      // =====================================================
-
       const aiData =
         aiResponse.data
 
@@ -141,8 +103,7 @@ function AIRecovery() {
         Array.isArray(
           aiData?.insights
         )
-          ? aiData.insights
-          : []
+          ? aiData.insights: []
 
 
       setInsights(
