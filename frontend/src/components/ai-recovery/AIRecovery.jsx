@@ -679,56 +679,32 @@ function AIRecovery() {
     (insight) => {
 
       return (
-
         insight?.paymentDatabaseId ??
-
         insight?.payment?.id ??
-
         insight?.paymentId
-
       )
-
     }
-
-
   const getRecommendation =
     (insight) => {
-
       return (
-
         insight?.aiRecommendation ??
-
         insight?.recommendation ??
-
         insight?.message ??
-
         'No AI recommendation available.'
-
       )
-
     }
-
-
   const getConfidence =
     (insight) => {
-
       const value =
         Number(
           insight?.aiConfidence ?? 0
         )
-
-
       if (value <= 1) {
-
         return value * 100
 
       }
-
-
       return value
-
     }
-
   const getSagaStatus =
     (paymentId) => {
 
